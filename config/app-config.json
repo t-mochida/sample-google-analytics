@@ -1,0 +1,40 @@
+{
+  "analytics" : {
+    "viewId" : "00000000",
+    "credential" : "sample",
+    "clientSecrets" : "config/client_secrets.json"
+  },
+  "reportBookName" : "運用レポート({$year}年{$month}月)",
+  "reportSheets" : [
+    {
+      "name" : "日別ユーザアクセス数",
+      "dimentions" : "ga:date",
+      "metrics" : "ga:sessions,ga:pageviews,ga:avgSessionDuration,ga:users",
+      "sort" : "-ga:sessions",
+      "maxResults" : "50"
+    }
+  ],
+  "reportFormat" : {
+    "headers" : [
+      "ga:date=日付",
+      "ga:sessions=セッション",
+      "ga:pageviews=ページビュー数",
+      "ga:avgSessionDuration=平均セッション時間",
+      "ga:users=ユーザ",
+      "ga:deviceCategory=デバイス カテゴリ",
+      "ga:hour=時",
+      "ga:operatingSystem=オペレーティング システム",
+      "ga:browser=ブラウザ"
+     ],
+    "dataTypes" : [
+      "ga:date=Date",
+      "ga:avgSessionDuration=Double",
+      "ga:hour=Time"
+    ],
+    "dataFormats" : [
+      "Date=yyyy/MM/dd",
+      "Double=%.2f",
+      "Time=%s:00"
+    ]
+  }
+}
