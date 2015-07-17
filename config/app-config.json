@@ -10,9 +10,44 @@
       "name" : "日別ユーザアクセス数",
       "dimentions" : "ga:date",
       "metrics" : "ga:sessions,ga:pageviews,ga:avgSessionDuration,ga:users",
-      "sort" : "-ga:sessions",
+      "sort" : "ga:date",
       "maxResults" : "50"
-    }
+    },
+    {
+			"name" : "アクセス統計",
+			"dimentions" : "ga:date",
+			"metrics" : "ga:sessions, ga:pageviews,ga:avgSessionDuration",
+			"sort" : "-ga:sessions",
+			"maxResults" : "50"
+		},
+		{
+			"name" : "デバイス別アクセス数",
+			"dimentions" : "ga:deviceCategory",
+			"metrics" : "ga:sessions, ga:pageviews, ga:users",
+			"sort" : "-ga:sessions",
+			"maxResults" : "50"
+		},
+		{
+			"name" : "時間別ユーザアクセス数",
+			"dimentions" : "ga:hour",
+			"metrics" : "ga:sessions, ga:pageviews,ga:avgSessionDuration,ga:users",
+			"sort" : "-ga:sessions",
+			"maxResults" : "50"
+		},
+		{
+			"name" : "OS別アクセス数",
+			"dimentions" : "ga:operatingSystem",
+			"metrics" : "ga:sessions, ga:pageviews, ga:users",
+			"sort" : "-ga:sessions",
+			"maxResults" : "50"
+		},
+		{
+			"name" : "月別ブラウザアクセス数",
+			"dimentions" : "ga:browser",
+			"metrics" : "ga:sessions, ga:pageviews, ga:users",
+			"sort" : "-ga:sessions",
+			"maxResults" : "50"
+		}
   ],
   "reportFormat" : {
     "headers" : [

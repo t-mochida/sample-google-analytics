@@ -20,20 +20,20 @@ public class SimplePrinter implements ReportPrinter {
 	}
 
 	@Override
-	public void begin() {
+	public void begin() throws Exception {
 		System.out.println("------------------------------------------------------------------");
 		System.out.println(this.title);
 		System.out.println("------------------------------------------------------------------");
 	}
 
 	@Override
-	public void printSheetName(ReportSheet sheet) {
+	public void printSheetName(ReportSheet sheet) throws Exception {
 	    System.out.println();
 		System.out.println("▼ " + sheet.getName());
 	}
 
 	@Override
-	public void printSheet(GaData query, ReportSheet sheet, ReportFormat reportFormat) {
+	public void printSheet(GaData query, ReportSheet sheet, ReportFormat reportFormat) throws Exception {
 		System.out.println("printing results for profile: " + query.getProfileInfo().getProfileName());
 
 		if (query.getRows() == null || query.getRows().isEmpty()) {
@@ -68,7 +68,7 @@ public class SimplePrinter implements ReportPrinter {
 	}
 
 	@Override
-	public void finish() {
+	public void finish() throws Exception {
 	}
 
 	@Override

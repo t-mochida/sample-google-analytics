@@ -6,13 +6,13 @@ import com.sample.ga.Config.ReportSheet;
 
 public interface ReportPrinter {
 
-	void begin();
+	void begin() throws Exception;
 
-	void printSheetName(ReportSheet sheet);
+	void printSheetName(ReportSheet sheet) throws Exception;
 
-	void printSheet(GaData query, ReportSheet sheet, ReportFormat reportFormat);
+	void printSheet(GaData query, ReportSheet sheet, ReportFormat reportFormat) throws Exception;
 
-	void finish();
+	void finish() throws Exception;
 
 	void close();
 

@@ -67,7 +67,16 @@ public class ToolMain {
 			System.exit(-1);
 		}
 
-		ReportPrinter printer = new SimplePrinter(config, startDate, endDate, year, month);
+		//ReportPrinter printer = new SimplePrinter(config, startDate, endDate, year, month);
+		ReportPrinter printer = null;
+		try {
+			printer = new SpreadSheetPrinter(config, startDate, endDate, year, month, currentDir);
+		} catch (Exception e) {
+			//e.printStackTrace();
+			System.out.println("[ スプレッドシートの認証に失敗しました。 ]");
+			System.exit(-1);
+		}
+
 		AnalyticsClient client = new AnalyticsClient(config, currentDir, printer);
 		try {
 			client.executeDataQuery(startDate, endDate);

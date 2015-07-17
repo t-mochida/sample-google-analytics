@@ -17,6 +17,7 @@ import com.google.api.client.json.JsonFactory;
 import com.google.api.client.json.jackson2.JacksonFactory;
 import com.google.api.client.util.store.FileDataStoreFactory;
 import com.google.api.services.analytics.AnalyticsScopes;
+import com.google.api.services.drive.DriveScopes;
 
 /**
  * 認証クラス
@@ -26,13 +27,17 @@ import com.google.api.services.analytics.AnalyticsScopes;
 public class Authorizer {
 
 	private static final List<String> SCOPES = Arrays.asList(
-			AnalyticsScopes.ANALYTICS_READONLY);
+			AnalyticsScopes.ANALYTICS_READONLY,
+			"http://spreadsheets.google.com/feeds",
+			"https://spreadsheets.google.com/feeds",
+			"http://docs.google.com/feeds",
+			DriveScopes.DRIVE_FILE);
 
 	public static final String DATA_STORE_BASE_DIR = ".store/analytics_tool/";
 
 	public static final JsonFactory JSON_FACTORY = JacksonFactory.getDefaultInstance();
 
-	public static HttpTransport httpTransport;
+	public static HttpTransport HTTP_TRANSPORT;
 
 	public static FileDataStoreFactory dataStoreFactory;
 
@@ -46,7 +51,7 @@ public class Authorizer {
 	 */
 	public static void init(Config config, String dirPath) throws Exception {
 
-        httpTransport = GoogleNetHttpTransport.newTrustedTransport();
+		HTTP_TRANSPORT = GoogleNetHttpTransport.newTrustedTransport();
         dataStoreFactory = new FileDataStoreFactory( getDataStoreDir(config.getAnalytics().getCredential()) );
 
         String filePath = config.getAnalytics().getClientSecrets();
@@ -64,7 +69,7 @@ public class Authorizer {
 		}
 
 		GoogleAuthorizationCodeFlow flow = new GoogleAuthorizationCodeFlow.Builder(
-			httpTransport, JSON_FACTORY, clientSecrets, SCOPES).setDataStoreFactory(dataStoreFactory).setAccessType("offline").setApprovalPrompt("force").build();
+				HTTP_TRANSPORT, JSON_FACTORY, clientSecrets, SCOPES).setDataStoreFactory(dataStoreFactory).setAccessType("offline").build();
 
 		credential = new AuthorizationCodeInstalledApp(flow, new LocalServerReceiver()).authorize("user");
 	}

@@ -24,7 +24,7 @@ public class AnalyticsClient {
 		this.config = config;
 		this.printer = printer;
 
-        analytics = new Analytics.Builder(Authorizer.httpTransport, Authorizer.JSON_FACTORY, Authorizer.credential).setApplicationName(APPLICATION_NAME).build();
+        analytics = new Analytics.Builder(Authorizer.HTTP_TRANSPORT, Authorizer.JSON_FACTORY, Authorizer.credential).setApplicationName(APPLICATION_NAME).build();
 	}
 
 	public void executeDataQuery(String startDate, String endDate) throws Exception {
